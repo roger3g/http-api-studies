@@ -74,16 +74,16 @@ RESTful, é a aplicação dos padrões REST.
 
 ### GET
 
-`GET = curl -X GET http://localhost:80/users`
+`curl -X GET http://localhost:80/users`
 
 ### POST
 
-`POST = curl -d '{"name": "Roger", "email": "roger@gmail.com", "phone": "(77) 7777-7777"}' -H "Content-type: application/json" -X POST http://localhost:80/users`
+`curl -d '{"name": "Roger", "email": "roger@gmail.com", "phone": "(77) 7777-7777"}' -H "Content-type: application/json" -X POST http://localhost:80/users`
 
 ### PUT
 
-`PUT = curl -d '{"name": "Luiz", "email": "luiz@gmail.com", "phone": "(77) 7777-7777"}' -H "Content-type: application/json" -X PUT http://localhost:80/users/ID`
+`curl -d '{"name": "Luiz", "email": "luiz@gmail.com", "phone": "(77) 7777-7777"}' -H "Content-type: application/json" -X PUT http://localhost:80/users/ID`
 
 ### DELETE
 
-`DELETE = curl -X DELETE http://localhost:80/users/ID`
+`curl -X DELETE http://localhost:80/users/ID`
