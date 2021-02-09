@@ -25,7 +25,7 @@ router.get('/users', (request, response) => {
   response.send(content)
 })
 
-router.post('/', (request, response) => {
+router.post('/users', (request, response) => {
   const {name, email, phone} = request.body
   const currentContent = readFile()
   const id = Math.random().toString(32).substr(2,9).toUpperCase()
