@@ -2,30 +2,30 @@ const express = require('express')
 const server = express()
 const router = express.Router()
 
-const fs = require('fs')
-const {readFileSync, writeFileSync} = fs
+const { readFileSync, writeFileSync } = require('fs')
+const { join } = require('path')
 
-const PORT = 80
+const PORT = 3000
 
 server.use(express.json({extended: true}))
 server.use(router)
 
 const readFile = () => {
-  const content = readFileSync('./data/users.json', 'utf-8')
+  const content = readFileSync(join(__dirname, './users.json'), 'utf-8')
   return JSON.parse(content)
 }
 
 const writeFile = content => {
   const updatedFile = JSON.stringify(content, null, 2)
-  return writeFileSync('./data/users.json', updatedFile, 'utf-8')
+  return writeFileSync(join(__dirname, './users.json'), updatedFile, 'utf-8')
 }
 
-router.get('/users', (request, response) => {
+router.get('/', (request, response) => {
   const content = readFile()
-  response.send(content)
+  return response.send(content)
 })
 
-router.post('/users', (request, response) => {
+router.post('/', (request, response) => {
   const {name, email, phone} = request.body
   const currentContent = readFile()
   const id = Math.random().toString(32).substr(2,9).toUpperCase()
@@ -33,10 +33,10 @@ router.post('/users', (request, response) => {
   
   currentContent.push({id, name, email, phone})
   writeFile(currentContent)
-  response.send({id, name, email, phone})
+  return response.send({id, name, email, phone})
 })
 
-router.put('/users:id', (request, response) => {
+router.put('/:id', (request, response) => {
   const {id} = request.params
   const {name, email, phone} = request.body
   
@@ -60,10 +60,10 @@ router.put('/users:id', (request, response) => {
   currentContent[selectedUser] = NewUser
   writeFile(currentContent)
 
-  response.send(NewUser)
+  return response.send(NewUser)
 })
 
-router.delete('/users:id', (request, response) => {
+router.delete('/:id', (request, response) => {
   const {id} = request.params
   const currentContent = readFile()
   const selectedUser = currentContent.findIndex(user => user.id === id)
@@ -71,7 +71,7 @@ router.delete('/users:id', (request, response) => {
   currentContent.splice(selectedUser, 1)
   writeFile(currentContent)
 
-  response.send('Deleted User')
+  return response.send('Deleted User')
 })
 
 server.listen(PORT, (error) => {
@@ -79,5 +79,5 @@ server.listen(PORT, (error) => {
   ? 'Error when running the server' 
   : `Server running on localhost:${PORT}`
   
-  console.log(message)
+  return console.log(message)
 })

@@ -4,13 +4,15 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "server.js",
-    "dev:server": "nodemon"
+    "dev:server": "nodemon json-crud/server.js",
+    "dev:api": "nodemon consuming-api/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   },
   "devDependencies": {

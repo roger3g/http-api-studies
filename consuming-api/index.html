@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API</title>
+</head>
+<body>
+
+  <main></main>
+
+  <script>
+
+    const getContent = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/')
+        const data = await response.json()
+        showContent(data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    const showContent = users => {
+      let output = ''
+
+      for (let user of users) {
+        output += `<li>Name: ${user.name} - Username: ${user.username}</li>`
+      }
+
+      return document.querySelector('main').innerHTML = output
+    }
+
+    getContent()
+
+  </script>
+  
+</body>
+</html>
