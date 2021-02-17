@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev:server": "nodemon json-crud/server.js",
-    "dev:api": "nodemon consuming-api/server.js"
+    "dev:api": "nodemon consuming-api/server.js",
+    "dev:test": "nodemon tests/server.js"
   },
   "keywords": [],
   "author": "",

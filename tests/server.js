@@ -8,11 +8,13 @@ server.use(cors())
 
 server.get('/', async (req, res) => {
   try {
-    const { data } = await axios('https://jsonplaceholder.typicode.com/users')
+    const { data } = await axios('https://jsonplaceholder.typicode.com/comments')
     return res.json(data)
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 })
 
-server.listen(8080)
+server.listen(8080, () => {
+  console.log('Server running on http://localhost:8080')
+})
