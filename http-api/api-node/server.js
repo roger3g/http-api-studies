@@ -1,50 +1,68 @@
 const express = require('express')
 const server = express()
+const router = express.Router()
 
-const port = 8080
+const data = require('./data.json')
+const port = 3000
+
 server.use(express.json({extended: true}))
+server.use(router)
 
-const users = []
-
-server.get('/users', (req, res) => { // Pedindo um usuário
-  return res.send(JSON.stringify(users, null, 2))
+router.get('/users', (request, response) => {
+  return response.json(data)
 })
 
-server.post('/users', (req, res) => { // Criando usuário
-  const { user } = req.body
-  const id = Math.random().toString(32).substr(2,9).toUpperCase()
+router.get('/users/:id', (request, response) => {
+  const { id } = request.params
+  const selectedUser = data.findIndex(user => user.id === id)
 
-  users.push({id: id, user: user})
-
-  return res.send(JSON.stringify(users, null, 2))
+  if (!selectedUser) return response.status(204).json()
+  return response.json(data[selectedUser])
 })
 
-server.put('/users/:id', (req, res) => { // Editando usuário
-  const { user } = req.body
-  const { id } = req.params
-
-  const selectedUser = users.findIndex(user => user.id === id)
-
-  users[selectedUser].user = user
-
-  return res.send(JSON.stringify(users, null, 2))
-})
-
-server.delete('/users/:id', (req, res) => { // Deletando usuário
-  const { id } = req.params
+router.post('/users', (request, response) => {
+  const { name, email } = request.body
   
-  const selectedUser = users.findIndex(user => user.id === id)
-  users.splice(selectedUser, 1)
+  const id = Math.random().toString(32).substr(2,4).toUpperCase()
+  data.push({id: id, name: name, email: email})
 
-  return res.send(JSON.stringify(users, null, 2))
+  return response.json(data)
 })
 
-server.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}/users`)
+router.put('/users/:id', (request, response) => {
+  const { name, email } = request.body
+  const { id } = request.params
+  
+  const selectedUser = data.findIndex(user => user.id === id)
+
+  const {
+    id: currentId,
+    name: currentName,
+    email: currentEmail, 
+  } = data[selectedUser]
+
+  data[selectedUser].id = currentId
+  data[selectedUser].name = name ? name : currentName
+  data[selectedUser].email = email ? email : currentEmail
+
+  if (!selectedUser) return response.status(204).json()
+  return response.json(data[selectedUser])
 })
 
-// Comandos curl
-// GET: curl -X GET http://localhost:8080/users
-// POST: curl -d '{"user": "userName"}' -H "Content-type: application/json" -X POST http://localhost:8080/users
-// PUT: curl -d '{"user": "userName"}' -H "Content-type: application/json" -X PUT http://localhost:8080/users/ID
-// DELETE: curl -X DELETE http://localhost:8080/users/ID
+router.delete('/users/:id', (request, response) => {
+  const { id } = request.params
+  
+  const selectedUser = data.findIndex(user => user.id === id)
+  data.splice(selectedUser, 1)
+
+  if (!selectedUser) return response.status(204).json()
+  return response.json(data)
+})
+
+server.listen(port, error => {
+  const message = error 
+  ? 'Error when running the server' 
+  : `Server running on http://localhost:${port}/users`
+  
+  return console.log(message)
+})
