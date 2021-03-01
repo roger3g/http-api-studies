@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon http-api/json-crud/server.js"
+    "dev:crud": "nodemon sqlite-crud/server.js",
+    "dev:api": "nodemon http-api/api-node/server.js",
+    "dev:json": "nodemon http-api/json-crud/server.js"
   },
   "keywords": [],
   "author": "",
