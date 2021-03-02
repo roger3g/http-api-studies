@@ -2,66 +2,111 @@ const express = require('express')
 const server = express()
 
 const Database = require( './database/db.js' )
-const createUsers = require( './database/createUsers.js' )
+const createUser = require( './database/createUser.js' )
 
-server.get('/create/:name/:age', (req, res) => {
+const port = 3000
 
-  Database.then(async db => {
-    await createUsers(db, {
-      name: String(req.params.name),
-      age: String(req.params.age)
+server.use(express.json({extended: true}))
+
+server.get('/users', (req, res) => { // Acessar todos os usuários
+
+  try {
+
+    Database.then(async db => {
+      const users = await db.all('SELECT * FROM users')
+      console.log(users)
     })
-  })
+    
+  } catch (error) {
+    console.log(error)
+  }
 
-  return res.json({message: 'Create'})
+  return res.send('Accessing users')
 })
 
-server.get('/read', (req, res) => {
+server.get('/users/:id', (req, res) => { // Acessar usuário por id
 
-  Database.then(async db => {
-    const users = await db.all('SELECT * FROM users')
-    console.log(users)
-  })
+  try {
 
-  return res.json({message: 'Read all'})
+    Database.then(async db => {
+      const user = await db.all(`SELECT * FROM users WHERE id = "${req.params.id}"`)
+      console.log(user)
+    })
+    
+  } catch (error) {
+    console.log(error)
+  }
+
+  return res.send('Accessing specified user')
 })
 
-server.get('/read/:id', (req, res) => {
+server.post('/users', (req, res) => { // Criar um usuário
 
-  Database.then(async db => {
-    const user = await db.all(`SELECT * FROM users WHERE id = "${req.params.id}"`)
-    console.log(user)
-  })
+  try {
 
-  return res.json({message: 'Read'})
+    Database.then(async db => {
+      await createUser(db, {
+        name: String(req.body.name),
+        age: String(req.body.age)
+      })
+    })
+    
+  } catch (error) {
+    console.log(error)
+  }
+
+  return res.send('Creating user')
 })
 
-server.get('/update/:id/:age', (req, res) => {
+server.put('/users/:id/', (req, res) => { // Editar um usuário
 
-  Database.then(async db => {
-    await db.all(`UPDATE users SET age = '${req.params.age}' WHERE id = "${req.params.id}"`)
-  })
+  try {
 
-  return res.json({message: 'Update'})
+    Database.then(async db => {
+      await db.all(`UPDATE users SET age = '${req.body.age}' WHERE id = "${req.params.id}"`)
+    })
+    
+  } catch (error) {
+    console.log(error)
+  }
+
+  return res.send('Updating user')
 })
 
-server.get('/delete/:id', (req, res) => {
+server.delete('/users', (req, res) => { // Deletar todos os usuário
 
-  Database.then(async db => {
-    await db.run( `DELETE FROM users WHERE id = "${req.params.id}"` )
-  })
+  try {
 
-  return res.json({message: 'Delete'})
+    Database.then(async db => {
+      await db.run('DELETE FROM users')
+    })
+    
+  } catch (error) {
+    console.log(error)
+  }
+
+  return res.send('Deleting all user')
 })
 
-server.get('/close', (req, res) => {
+server.delete('/users/:id', (req, res) => { // Deletar usuário por id
 
-  Database.then(async db => {
-    await db.close()
-    console.log('Closing the database connection.')
-  })
+  try {
 
-  return res.json({message: 'Database connection successfully closed'})
+    Database.then(async db => {
+      await db.run(`DELETE FROM users WHERE id = "${req.params.id}"`)
+    })
+    
+  } catch (error) {
+    console.log(error)
+  }
+
+  return res.send('Deleting user')
 })
 
-server.listen(3000)
+server.listen(port, error => {
+  const message = error 
+  ? 'Error when running the server' 
+  : `Server running on http://localhost:${port}/users`
+  
+  return console.log(message)
+})

@@ -1,4 +1,4 @@
-function createUsers (db, user) {
+function createUser (db, user) {
   return db.run(`
     INSERT INTO users (
       name,
@@ -10,4 +10,4 @@ function createUsers (db, user) {
   `)
 }
 
-module.exports = createUsers
+module.exports = createUser
