@@ -1,8 +1,8 @@
 const express = require('express')
 const server = express()
 
-const Database = require( './database/db.js' )
-const createUser = require( './database/createUser.js' )
+const Database = require('./database/db.js')
+const createUser = require('./database/createUser.js')
 
 const port = 3000
 
