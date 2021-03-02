@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users</title>
+
+  <style>
+    .card {
+      width: 300px;
+      height: 100px;
+      border: 2px solid #7159C1;
+
+      padding: 10px;
+      margin: 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+  </style>
+
+</head>
+<body>
+
+  <h2>Users</h2>
+
+  {%for user in users %}
+    <div class="card">
+      <span>{{user.name}}</span>
+      <strong>{{user.name}}@gmail.com</strong>
+    </div>
+  {%endfor%}
+
+  <a href="/">Voltar para página inicial</a>
+
+  <script> // Script para remover os espaços nos nomes dos emails
+    const strongs = document.querySelectorAll('strong')    
+
+    strongs.forEach(strong => {
+      const newText = strong.innerText.replace(/ /i, '')
+      return strong.innerText = newText
+    })
+  </script>
+  
+</body>
+</html>
