@@ -1,0 +1,22 @@
+{
+  "name": "", // Nome do projeto
+  "version": "1.0.0", // Versão atual do projeto
+  "description": "", // Descrição do projeto
+  "main": "", // Arquivo principal do projeto
+  "scripts": { // Scripts para automação de comandos
+    "start": ""
+  },
+  "repository": { // Tipo de repositório e link para o repositório do projeto
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [], // Palavras chaves relacionadas aos projeto
+  "author": { // Informações sobre o autor do projeto
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "license": "ISC", // Tipo de liçena do projeto
+  "dependencies": {},
+  "devDependencies": {}
+}

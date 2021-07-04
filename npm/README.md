@@ -1,10 +1,10 @@
 # NPM
 
-O NPM **(Node Package Manager)** é um poderoso gerenciador de pacotes utilizado para administrar as bibliotecas e frameworks utilizados em uma aplicação node.
+O NPM __(Node Package Manager)__ é um poderoso gerenciador de pacotes utilizado para administrar as bibliotecas e frameworks utilizados em uma aplicação node.
 
 ## O que é NPM?
 
-O NPM é uma ferramenta do **Node.js** para o gerenciamento de pacotes. Ele permite instalar, desinstalar e atualizar dependências em uma aplicação por meio de uma simples instrução na linha de comando. Sempre que um projeto é criado por meio do gerenciador, é adicionado um arquivo chamado `package.json`, que contém a relação dos pacotes instalados no ambiente. Veja um exemplo, a seguir.
+O NPM é uma ferramenta do __Node.js__ para o gerenciamento de pacotes. Ele permite instalar, desinstalar e atualizar dependências em uma aplicação por meio de uma simples instrução na linha de comando. Sempre que um projeto é criado por meio do gerenciador, é adicionado um arquivo chamado `package.json`, que contém a relação dos pacotes instalados no ambiente. Veja um exemplo, a seguir:
 
 ```json
 {
@@ -28,27 +28,28 @@ Assim, quando for preciso realizar alguma alteração, o NPM verifica esse arqui
 - Inicie um pacote rapidamente: `npm init -y`
 
 - Instalar pacote: `npm install [pacote]`
-- Instalar pacotes: `npm install [pacote1] [pacote2] [pacote3] [pacoteN]`
+- Instalar pacotes: `npm install [pacote1] [pacote2]`
 - Instalar uma versão específica de um pacote: `npm install [pacote]@[versão]`
 
 - Desinstalar pacote: `npm remove [pacote]`
-- Desinstalar pacotes: `npm remove [pacote1] [pacote2] [pacote3] [pacoteN]`
+- Desinstalar pacotes: `npm remove [pacote1] [pacote2]`
 
 - Lista de pacotes instalados: `npm ls --depth 0`
 - Lista de pacotes instalados globalmente: `npm ls -g --depth 0`
 
 - Gitingore padrão Nodejs: `npx gitignore node`
+- Abrir um servidor: `npx lite-server`
 
 - Abrir o site de um projeto: `npm home [projeto]`
 - Abrir o repositório de um projeto: `npm repo [projeto]`
 
 - Analisar dependências desatualizadas: `npm outdated`
+- Remapear as dependências atualizadas: `npm update`
+- Atualiza as dependências instaladas: `npm upgrade`
 
 - Travar a versão das dependências instaladas: `npm shrinkwrap`
 
 - Procurar por pacotes não declarados no package.json: `npm prune && npm fund`
-
-- Abrir um servidor: `npx lite-server`
 
 Comando      | Atalho
 -------------|------------------
