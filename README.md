@@ -4,7 +4,9 @@ Node.js é um runtime de JavaScript baseado no motor de JavaScript V8 do Chrome.
 
 Node.JS = Runtime + JS Library
 
-<img src="images/image-1.jpg">
+<p align="center">
+  <img src="images/image-1.jpg">
+</p>
 
 ## Quando usar o Nodejs?
 
@@ -27,11 +29,15 @@ V8 é o mecanismo JavaScript e WebAssembly de código aberto de alto desempenho 
 
 O Node.js usa um único modelo de thread com loop de eventos, por isso impõe um estilo de programação assíncrona.
 
-<img src="images/image-3.png">
+<p align="center">
+  <img src="images/image-3.png">
+</p>
 
 ## Blocking vs Non-Blocking
 
-<img src="images/image-4.png">
+<p align="center">
+  <img src="images/image-4.png">
+</p>
 
 Ruim 🚫
 
@@ -65,27 +71,33 @@ O Event Loop é o que permite que o Node.js execute operações de I/O sem bloqu
 
 Fases do Event Loop:
 
-<img src="images/image-5.png">
+<p align="center">
+  <img src="images/image-5.png">
+</p>
 
-Timers
-  Tudo o que foi programado por meio de setTimeout() ou setInterval() será processado aqui.
+* Timers
+  * Tudo o que foi programado por meio de setTimeout() ou setInterval() será processado aqui.
 
-IO Callbacks
-  Aqui, a maioria dos retornos de chamada será processada. Como todo código de userland em Node.js é basicamente em callbacks (por exemplo, um callback para uma solicitação HTTP recebida aciona uma cascata de callbacks), este é o código de userland.
+* IO Callbacks
+  * Aqui, a maioria dos retornos de chamada será processada. Como todo código de userland em Node.js é basicamente em callbacks (por exemplo, um callback para uma solicitação HTTP recebida aciona uma cascata de callbacks), este é o código de userland.
 
-IO Polling
-  Pesquisa para novos eventos a serem processados na próxima execução.
+* IO Polling
+  * Pesquisa para novos eventos a serem processados na próxima execução.
 
-Set Immediate
-  Executa todos os callbacks registrados via setImmediate().
+* Set Immediate
+  * Executa todos os callbacks registrados via setImmediate().
 
-Close
-  Aqui, todos os retornos de chamada de evento on(‘close’) são processados.
+* Close
+  * Aqui, todos os retornos de chamada de evento on(‘close’) são processados.
 
 O cliclo do Event Loop:
 
-<img src="images/image-6.png">
+<p align="center">
+  <img src="images/image-6.png">
+</p>
 
 Quando existe o Event Loop?
 
-<img src="images/image-7.png">
+<p align="center">
+  <img src="images/image-7.png">
+</p>
