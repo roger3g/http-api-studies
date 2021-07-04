@@ -19,7 +19,7 @@ Node.JS = Runtime + JS Library
 
 V8 é o mecanismo JavaScript e WebAssembly de código aberto de alto desempenho do Google, escrito em C ++. É usado no Chrome e no Node.js, entre outros.
 
-<p alicgn="center">
+<p align="center">
   <img src="images/image-2.png" width="400px">
 </p>
 
