@@ -17,17 +17,3 @@ hostname()       | Exibe o nome do host
 totalmem()       | Exibe a memória total em bytes
 freemem()        | Exibe a memória livre em bytes
 uptime()         | empo que a máquina está ativa
-
-```js
-const os = require('os')
-
-console.log(os.type())
-console.log(os.version())
-console.log(os.platform())
-console.log(os.arch())
-console.log(os.endianness())
-console.log(os.hostname())
-console.log(os.totalmem())
-console.log(os.freemem())
-console.log(os.uptime())
-```

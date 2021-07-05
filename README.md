@@ -5,7 +5,7 @@ Node.js é um runtime de JavaScript baseado no motor de JavaScript V8 do Chrome.
 Node.JS = Runtime + JS Library
 
 <p align="center">
-  <img src="images/image-1.jpg">
+  <img src="docs/image-1.jpg">
 </p>
 
 ## Quando usar o Nodejs?
@@ -22,7 +22,7 @@ Node.JS = Runtime + JS Library
 V8 é o mecanismo JavaScript e WebAssembly de código aberto de alto desempenho do Google, escrito em C ++. É usado no Chrome e no Node.js, entre outros.
 
 <p align="center">
-  <img src="images/image-2.png" width="300px">
+  <img src="docs/image-2.png" width="300px">
 </p>
 
 ## Event Driven
@@ -30,13 +30,13 @@ V8 é o mecanismo JavaScript e WebAssembly de código aberto de alto desempenho 
 O Node.js usa um único modelo de thread com loop de eventos, por isso impõe um estilo de programação assíncrona.
 
 <p align="center">
-  <img src="images/image-3.png">
+  <img src="docs/image-3.png">
 </p>
 
 ## Blocking vs Non-Blocking
 
 <p align="center">
-  <img src="images/image-4.png">
+  <img src="docs/image-4.png">
 </p>
 
 Ruim 🚫
@@ -72,7 +72,7 @@ O Event Loop é o que permite que o Node.js execute operações de I/O sem bloqu
 Fases do Event Loop:
 
 <p align="center">
-  <img src="images/image-5.png">
+  <img src="docs/image-5.png">
 </p>
 
 * Timers
@@ -93,11 +93,21 @@ Fases do Event Loop:
 O cliclo do Event Loop:
 
 <p align="center">
-  <img src="images/image-6.png">
+  <img src="docs/image-6.png">
 </p>
 
 Quando existe o Event Loop?
 
 <p align="center">
-  <img src="images/image-7.png">
+  <img src="docs/image-7.png">
 </p>
+
+## HTTP
+
+* [Introdução](docs/1-Introdução.pdf)
+* [Conceitos](docs/2-Conceitos.pdf)
+* [URI](docs/3-URI.pdf)
+* [Messages](docs/4-Messages.pdf)
+* [Methods](docs/5-Methods.pdf)
+* [Headers](docs/6-Headers.pdf)
+* [Status-Code](docs/7-Status-Code.pdf)

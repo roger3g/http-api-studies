@@ -1,6 +1,6 @@
 # Módulo url
 
-- [X] **`parse()`** - Analise um endereço com o método `url.parse()` e ele retornará um objeto de URL com cada parte do endereço como propriedades, você terá outras propiedades como `host`, `pathname`, `search`, `query`, `month`.
+* [X] `parse()`: Analise um endereço com o método `url.parse()` e ele retornará um objeto de URL com cada parte do endereço como propriedades, você terá outras propiedades como `host`, `pathname`, `search`, `query`, `month`.
 
 Veja o exemplo abaixo:
 

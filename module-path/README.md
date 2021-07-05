@@ -2,10 +2,9 @@
 
 Com o módulo Path podemos trabalhar caminhos de arquivos e pastas.
 
-Documentation: https://nodejs.org/api/os.html
+Documentação: https://nodejs.org/api/path.html
 
-No node.js existe uma variável chamada `__dirname` que nos retorna o nosso caminho atual a partir da raiz.
-**Obs:** o `__dirname` não é exclusivo do módulo Path.
+No node.js existe uma variável global chamada `__dirname` que nos retorna o nosso caminho atual a partir da raiz. o `__dirname` não é exclusivo do módulo Path. 
 
 O módulo Path fornece uma maneira de trabalhar com diretórios e caminhos de arquivo.
 
